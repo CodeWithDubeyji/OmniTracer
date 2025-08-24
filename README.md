@@ -59,35 +59,35 @@ All orchestrated with **Docker Compose**, and visualized in **Grafana**.
 
 The project is organized into a clear and logical folder structure to manage configurations and application code.
 
-<div style="background-color: #282c34; color: #abb2bf; font-family: 'Fira Code', 'Courier New', Courier, monospace; padding: 20px; border-radius: 8px; line-height: 1.6;">
-    <div style="display: flex; justify-content: space-between;"><span>.</span><span style="color: #6a737d;"># Project Root</span></div>
-    <div style="display: flex; justify-content: space-between;"><span>├── README.md</span><span style="color: #6a737d;"># Project overview and instructions</span></div>
-    <div style="display: flex; justify-content: space-between;"><span>├── docker-compose.yml</span><span style="color: #6a737d;"># Orchestrates all services</span></div>
-    <div style="display: flex; justify-content: space-between;"><span>├── app/</span><span style="color: #6a737d;"># Sample Python Flask API application</span></div>
-    <div style="display: flex; justify-content: space-between;"><span>│   ├── Dockerfile.app</span><span style="color: #6a737d;"># Dockerfile for building the app image</span></div>
-    <div style="display: flex; justify-content: space-between;"><span>│   ├── main.py</span><span style="color: #6a737d;"># Flask application code with instrumentation</span></div>
-    <div style="display: flex; justify-content: space-between;"><span>│   └── requirements.txt</span><span style="color: #6a737d;"># Python dependencies for the app</span></div>
-    <div style="display: flex; justify-content: space-between;"><span>├── grafana/</span><span style="color: #6a737d;"># Grafana configuration for provisioning</span></div>
-    <div style="display: flex; justify-content: space-between;"><span>│   ├── dashboards/</span><span style="color: #6a737d;"># Dashboard JSON files for auto-provisioning</span></div>
-    <div style="display: flex; justify-content: space-between;"><span>│   │   └── sample_api_dashboard.json</span><span style="color: #6a737d;"># The main observability dashboard</span></div>
-    <div style="display: flex; justify-content: space-between;"><span>│   └── datasources/</span><span style="color: #6a737d;"># Data source YAML files for auto-provisioning</span></div>
-    <div style="display: flex; justify-content: space-between;"><span>│       └── datasource.yml</span><span style="color: #6a737d;"># Defines Prometheus, Loki, and Jaeger datasources</span></div>
-    <div style="display: flex; justify-content: space-between;"><span>├── loki/</span><span style="color: #6a737d;"># Loki configuration</span></div>
-    <div style="display: flex; justify-content: space-between;"><span>│   └── loki-config.yaml</span><span style="color: #6a737d;"># Loki server configuration</span></div>
-    <div style="display: flex; justify-content: space-between;"><span>├── prometheus/</span><span style="color: #6a737d;"># Prometheus configuration</span></div>
-    <div style="display: flex; justify-content: space-between;"><span>│   ├── alert.rules.yml</span><span style="color: #6a737d;"># Prometheus alerting rules</span></div>
-    <div style="display: flex; justify-content: space-between;"><span>│   └── prometheus.yml</span><span style="color: #6a737d;"># Prometheus server and scrape configuration</span></div>
-    <div style="display: flex; justify-content: space-between;"><span>├── promtail/</span><span style="color: #6a737d;"># Promtail configuration</span></div>
-    <div style="display: flex; justify-content: space-between;"><span>│   └── promtail-config.yaml</span><span style="color: #6a737d;"># Promtail agent configuration to scrape logs</span></div>
-    <div style="display: flex; justify-content: space-between;"><span>├── otel-collector/</span><span style="color: #6a737d;"># OpenTelemetry Collector configuration</span></div>
-    <div style="display: flex; justify-content: space-between;"><span>│   └── otel-collector-config.yaml</span><span style="color: #6a737d;"># OTel Collector pipeline configuration</span></div>
-    <div style="display: flex; justify-content: space-between;"><span>├── alertmanager/</span><span style="color: #6a737d;"># Alertmanager configuration</span></div>
-    <div style="display: flex; justify-content: space-between;"><span>│   └── config.yml</span><span style="color: #6a737d;"># Alertmanager routing and receiver configuration</span></div>
-    <div style="display: flex; justify-content: space-between;"><span>└── locust/</span><span style="color: #6a737d;"># Locust load testing setup</span></div>
-    <div style="display: flex; justify-content: space-between;"><span>    ├── Dockerfile.locust</span><span style="color: #6a737d;"># Dockerfile for building the Locust image</span></div>
-    <div style="display: flex; justify-content: space-between;"><span>    ├── locustfile.py</span><span style="color: #6a737d;"># Locust test script defining user behavior</span></div>
-    <div style="display: flex; justify-content: space-between;"><span>    └── requirements.txt</span><span style="color: #6a737d;"># Python dependencies for Locust</span></div>
-</div>
+```text
+.                                               # Project Root
+├── README.md                                   # Project overview and instructions
+├── docker-compose.yml                          # Orchestrates all services
+├── app/                                        # Sample Python Flask API application
+│   ├── Dockerfile.app                          # Dockerfile for building the app image
+│   ├── main.py                                 # Flask application code with instrumentation
+│   └── requirements.txt                        # Python dependencies for the app
+├── grafana/                                    # Grafana configuration for provisioning
+│   ├── dashboards/                             # Dashboard JSON files for auto-provisioning
+│   │   └── sample_api_dashboard.json           # The main observability dashboard
+│   └── datasources/                            # Data source YAML files for auto-provisioning
+│       └── datasource.yml                      # Defines Prometheus, Loki, and Jaeger datasources
+├── loki/                                       # Loki configuration
+│   └── loki-config.yaml                        # Loki server configuration
+├── prometheus/                                 # Prometheus configuration
+│   ├── alert.rules.yml                         # Prometheus alerting rules
+│   └── prometheus.yml                          # Prometheus server and scrape configuration
+├── promtail/                                   # Promtail configuration
+│   └── promtail-config.yaml                    # Promtail agent configuration to scrape logs
+├── otel-collector/                             # OpenTelemetry Collector configuration
+│   └── otel-collector-config.yaml              # OTel Collector pipeline configuration
+├── alertmanager/                               # Alertmanager configuration
+│   └── config.yml                              # Alertmanager routing and receiver configuration
+└── locust/                                     # Locust load testing setup
+    ├── Dockerfile.locust                       # Dockerfile for building the Locust image
+    ├── locustfile.py                           # Locust test script defining user behavior
+    └── requirements.txt                        # Python dependencies for Locust
+```
 
 ## **🚀 Getting Started**
 
@@ -110,8 +110,8 @@ cd Grafana
 2. Create Directory Structure and Files:  
    Ensure your project directory structure matches the one described above. Copy the provided code for each file into its respective location.
 3. Deploy the Stack:  
-    Navigate to the root directory of your project (where <span style="background-color: #f0f0f0; padding-left: 4px; padding-right: 4px; border-radius: 5px ">docker-compose.yml</span> is located) in your terminal and run the following command:
-   <div style="background-color: #f6f8fa; padding: 15px; border-radius: 5px;" >docker compose down -v && docker compose up --build --force-recreate -d</div> <br>
+    Navigate to the root directory of your project (where <span style="background-color: #f5f5f5; padding-left: 4px; padding-right: 4px; border-radius: 5px ">docker-compose.yml</span> is located) in your terminal and run the following command:
+   <div style="background-color: #f5f5f5; padding: 15px; border-radius: 5px;" >docker compose down -v && docker compose up --build --force-recreate -d</div> <br>
 
    - docker compose down \-v: Stops and removes all existing containers, networks, and **volumes** from previous runs. This ensures a clean slate and prevents conflicts.
    - &&: Ensures the next command runs only if the previous one was successful.

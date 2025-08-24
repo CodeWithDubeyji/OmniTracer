@@ -1,0 +1,18 @@
+# otel-collector/otel-collector-config.yaml
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+
+exporters:
+  otlp/jaeger:
+    endpoint: jaeger:4317 # Send traces to the unified Jaeger service
+    tls:
+      insecure: true # For local testing
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [otlp/jaeger]

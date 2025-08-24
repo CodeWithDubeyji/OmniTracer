@@ -1,0 +1,26 @@
+# alertmanager/config.yml
+global:
+  resolve_timeout: 5m
+
+route:
+  group_by: ['alertname', 'priority']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 1h
+  receiver: 'default-receiver'
+
+receivers:
+  - name: 'default-receiver'
+    # Example: you can configure email, Slack, PagerDuty, etc. here
+    # For a simple demo, we'll just log to console or have no specific action.
+    # To see alerts, you can check the Alertmanager UI at http://localhost:9093
+    # A webhook example:
+    # webhook_configs:
+    #   - url: 'http://webhook.site/YOUR_WEBHOOK_ID' # Replace with a real webhook endpoint
+
+inhibit_rules:
+  - source_match:
+      severity: 'critical'
+    target_match:
+      severity: 'warning'
+    equal: ['alertname', 'service']

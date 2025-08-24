@@ -1,0 +1,19 @@
+# prometheus/prometheus.yml
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: ['alertmanager:9093'] # Point to the Alertmanager service
+
+rule_files:
+  - 'alert.rules.yml' # Include your alerting rules
+
+scrape_configs:
+  - job_name: 'app'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['app:8000']

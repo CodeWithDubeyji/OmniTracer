@@ -1,0 +1,21 @@
+# prometheus/alert.rules.yml
+groups:
+  - name: atlan-api-alerts
+    rules:
+      - alert: HighErrorRate
+        expr: sum(rate(http_requests_total{job="app", status=~"5..|4.."}[1m])) by (endpoint) / sum(rate(http_requests_total{job="app"}[1m])) by (endpoint) > 0.05
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High error rate detected on {{ $labels.endpoint }}"
+          description: "The error rate for endpoint {{ $labels.endpoint }} is above 5% for the last 1 minute. Current value: {{ $value | humanizePercentage }}"
+
+      - alert: HighLatency
+        expr: histogram_quantile(0.99, sum(rate(http_request_duration_seconds_bucket{job="app"}[5m])) by (le, endpoint)) > 0.5 # Latency > 0.5 seconds for P99
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High latency detected on {{ $labels.endpoint }}"
+          description: "The 99th percentile latency for endpoint {{ $labels.endpoint }} is above 0.5 seconds for the last 2 minutes. Current value: {{ $value | humanizeDuration }}"

@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.env
+.venv
+env/
+venv/
+
+# Docker - Ignore persistent data volumes if they were mapped to local folders
+# (In this case, they are named volumes, so they aren't in the project directory,
+# but this is good practice).
+prometheus_data/
+grafana_data/
+loki_data/
+alertmanager_data/
+
+# VSCode
+.vscode/

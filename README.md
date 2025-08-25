@@ -41,8 +41,41 @@ All orchestrated with **Docker Compose**, and visualized in **Grafana**.
 ### 🗺️ High-Level Architecture
 
 <p align="center">
-  <img src="./High-level-architecture.svg" alt="OmniTrace High-Level Architecture" width="800">
+  <img src="./assets/High-level-architecture.svg" alt="OmniTrace High-Level Architecture" width="800">
 </p>
+
+
+### Dashboard Preview
+
+<p align="center">
+  <table align="center">
+    <tr>
+      <td align="center">
+        <img src="assets/grafana.png" alt="Grafana Dashboard" width="400">
+        <br>
+        <b>Grafana Dashboard</b>
+      </td>
+      <td align="center">
+        <img src="assets/prometheus.png" alt="Prometheus Dashboard" width="400">
+        <br>
+        <b>Prometheus Dashboard</b>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="assets/locust.png" alt="Locust Dashboard" width="400">
+        <br>
+        <b>Locust Dashboard</b>
+      </td>
+      <td align="center">
+        <img src="assets/jaeger.png" alt="Jaeger Dashboard" width="400">
+        <br>
+        <b>Jaeger Dashboard</b>
+      </td>
+    </tr>
+  </table>
+</p>
+
 
 ### **Components Overview:**
 
